@@ -54,5 +54,9 @@ tasks.processResources {
 }
 
 jar {
-    finalizedBy shadowJar
+    archiveFileName = "${rootProject.name}.jar"
+}
+
+shadowJar {
+    archiveFileName = "${rootProject.name}.jar"
 }

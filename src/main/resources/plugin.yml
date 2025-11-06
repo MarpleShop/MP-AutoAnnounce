@@ -2,3 +2,15 @@ name: '${pluginName}'
 version: '${version}'
 main: '${group}.${packageName}.${className}'
 api-version: '${paperVersion}'
+
+depend:
+  - MP-FrameWork
+
+soft-depend:
+  - MP-AutoAnnouncePro
+
+commands:
+  공지:
+    description: 공지 명령어
+  공지리로드:
+    description: 공지 리로드 명령어

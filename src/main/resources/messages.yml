@@ -1,0 +1,21 @@
+prefix: "&6&l[&f공지&6&l]&r "
+
+errorMessages:
+  # 권한이 없을 때
+  noPermission: "&c권한이 없습니다!"
+
+  # 내용이 없을 때
+  noContent: "&c공지사항을 입력해주세요!"
+
+messages:
+  # /공지리로드
+  reload: "config.yml, messages.yml 파일을 리로드했습니다."
+
+announce:
+  format:
+      - ""
+      - "{announcement}"
+      - ""
+  announcements:
+    - "공지 작성 예시입니다."
+    - "&a공지 작성 예시입니다."
