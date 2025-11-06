@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    alias(libs.plugins.paperweight)
+    alias(libs.plugins.shadow)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    // BUKKIT DEPENDENCY
+    paperweight.paperDevBundle(libs.versions.paper)
+
+    // LOMBOK
+    compileOnly "org.projectlombok:lombok:1.18.26"
+    annotationProcessor "org.projectlombok:lombok:1.18.26"
+
+    // MP-FrameWork
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+ext {
+    set("pluginName", project.name)
+    set("packageName", project.name.replace("MP-", "").toLowerCase())
+    set("className", project.name.replace("MP-", "Marple"))
+    set("paperVersion", libs.versions.paper.get().toString().split("\\.").take(2).join("."))
+}
+
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.processResources {
+    filesMatching("plugin.yml") {
+        expand([
+                group: project.group,
+                version: project.version,
+                paperVersion: project.ext.paperVersion,
+                pluginName: project.ext.pluginName,
+                packageName: project.ext.packageName,
+                className: project.ext.className
+        ])
+    }
+}
+
+jar {
+    finalizedBy shadowJar
+}

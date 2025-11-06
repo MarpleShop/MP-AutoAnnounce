@@ -1,0 +1,11 @@
+[versions]
+shadow = "8.1.1"
+paper = "1.18.2-R0.1-SNAPSHOT"
+paperweight = "1.5.5"
+
+[libraries]
+paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+
+[plugins]
+paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweight" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
